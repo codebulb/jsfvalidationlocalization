@@ -1,0 +1,12 @@
+label.ui-state-error {
+    font-weight: bold;
+    color: #b94a48;
+    background: none;
+ }
+ input.ui-state-error, select.ui-state-error, textarea.ui-state-error {
+     background-color: #eed3d7;
+ }
+ 
+ [title] {
+     cursor: help;
+ }
