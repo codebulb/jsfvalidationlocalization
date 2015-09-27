@@ -1,5 +1,6 @@
 package ch.codebulb.jsfvalidationlocalization.controller;
 
+import java.io.Serializable;
 import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -10,7 +11,7 @@ import javax.faces.context.FacesContext;
 // based on http://stackoverflow.com/a/5391493
 @ManagedBean
 @SessionScoped
-public class LocaleManager {
+public class LocaleManager implements Serializable {
     private Locale locale;
     
     @PostConstruct
@@ -20,7 +21,7 @@ public class LocaleManager {
             locale = viewRoot.getLocale();
         }
         else {
-            locale = new Locale("en");
+            locale = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
         }
     }
 

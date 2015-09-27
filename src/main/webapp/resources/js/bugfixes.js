@@ -16,27 +16,6 @@ var Bugfixes = {
     
     /*
      * Fixes a bug in PrimeFaces Extensions' inputNumber component:
-     * When hitting the ENTER key inside the component, triggering form submit,
-     * the component's current value is not submitted and thus the previously
-     * submitted value restored.
-     * 
-     * The bugfix resolves this problem by relying on inputNumber's public JS API.
-     */
-    primeFacesExtensionsInputNumberReturnKey : function() {
-        $("input.pe-inputNumber").each(function() {
-            var onkeyup = this.onkeyup;
-            this.onkeyup = function() {
-                Bugfixes.getWidgetVarById(this.id).setValue(Bugfixes.getWidgetVarById(this.id).getValue);
-                // keep original function
-                if (onkeyup !== null) {
-                    return onkeyup();
-                }
-            };
-        });
-    },
-    
-    /*
-     * Fixes a bug in PrimeFaces Extensions' inputNumber component:
      * Recognizing emptyValue to hide the symbol doesn't work if the component
      * is backed by a primitive int value as it is not rendered as "empty String" but as "0".
      * 
@@ -73,7 +52,6 @@ var Bugfixes = {
      * <o:onloadScript>Bugfixes.apply();</o:onloadScript>
      */
     apply : function() {
-        Bugfixes.primeFacesExtensionsInputNumberReturnKey();
         Bugfixes.primeFacesExtensionsInputNumberZeroToEmpty();
     }
 };
